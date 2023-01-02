@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sleepway.Context;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -12,10 +13,15 @@ namespace ConsoleApp1
     {
         public static void Main()
         {
-            int option = Utilities.ShowMenu("Please choose one of the following: ", new[]
-            {
-                ""
-            });
+            var context = new CampsContext();
+            context.Database.EnsureCreated();
+            
+            //int option = Utilities.ShowMenu("Please choose one of the following: ", new[]
+            //{
+            //    ""
+            //});
+
+
         }
     }
 }

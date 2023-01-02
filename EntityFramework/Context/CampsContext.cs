@@ -21,6 +21,7 @@ namespace Sleepway.Context
 
         }
 
+        //public DbSet<Booking> Bookings { get; set; }
         public DbSet<Cabin> Cabins { get; set; }
         public DbSet<Camper> Campers { get; set; }
         public DbSet<Counselor> Counselors { get; set; }
