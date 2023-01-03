@@ -16,11 +16,11 @@ namespace Sleepway.Models
         public string Relationship { get; set; }
 
         //Must have a camper relative
-        //[Required]
+        [Required]
         //public Camper Id { get; set; }
         
 
-        public Camper CamperCamper { get; set; }
+        public Camper Camper { get; set; }
 
     }
 }
