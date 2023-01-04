@@ -16,7 +16,7 @@ namespace Sleepway.Models
 
         //fk
 
-        public virtual ICollection<Counselor> Counselors { get; set; }
+       // public virtual ICollection<Counselor> Counselors { get; set; }
         public virtual ICollection<Camper> Campers { get; set; }
 
         public virtual Counselor Counselor { get; set; }

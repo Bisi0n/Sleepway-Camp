@@ -14,7 +14,7 @@ namespace ConsoleApp1
         public static void Main()
         {
             var context = new CampsContext();
-            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
             
             //int option = Utilities.ShowMenu("Please choose one of the following: ", new[]
             //{
