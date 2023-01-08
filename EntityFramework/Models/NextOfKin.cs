@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,9 +19,9 @@ namespace Sleepway.Models
         //Must have a camper relative
         //[Required]
         //public Camper Id { get; set; }
-        
 
-        public Camper CamperCamper { get; set; }
+        [Required]
+        public Camper Camper { get; set; }
 
     }
 }
