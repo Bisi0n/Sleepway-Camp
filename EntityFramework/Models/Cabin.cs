@@ -13,7 +13,12 @@ namespace Sleepway.Models
         public int CabinId { get; set; }
         public string Name { get; set; }
 
-        public virtual ICollection<Counselor> Counselors { get; set; }
+
+        //fk
+
+       // public virtual ICollection<Counselor> Counselors { get; set; }
         public virtual ICollection<Camper> Campers { get; set; }
+
+        public virtual Counselor Counselor { get; set; }
     }
 }
