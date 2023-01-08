@@ -10,7 +10,7 @@ namespace ConsoleApp1
 {
     public class Utilities
     {
-        public void AddCabin(CampsContext db)
+        public static void AddCabin(CampsContext db)
         {
             db.Cabins.AddRange(new[]
                 {
@@ -21,7 +21,7 @@ namespace ConsoleApp1
             db.SaveChanges();
         }
 
-        public void AddCampers(CampsContext db)
+        public static void AddCampers(CampsContext db)
         {
             // 18/3 = 6
             db.Campers.AddRange(new[]
@@ -45,9 +45,10 @@ namespace ConsoleApp1
                 new Camper() {FirstName = "Ronaldo", LastName = "Nazario", Room = 3},
                 new Camper() {FirstName = "Ronaldinho", LastName = "Gaucho", Room = 3}
             });
+            db.SaveChanges();
         }
 
-        public void AddCounselor(CampsContext db)
+        public static void AddCounselor(CampsContext db)
         {
             db.Counselors.AddRange(new[]
             {
@@ -56,9 +57,10 @@ namespace ConsoleApp1
                 new Counselor() {FirstName = "Peter", LastName = "Nilsson"},
 
             });
+            db.SaveChanges();
         }
 
-        public void AddNextOfKin(CampsContext db)
+        public static void AddNextOfKin(CampsContext db)
         {
             db.NextOfKins.AddRange(new[]
             {
@@ -66,6 +68,7 @@ namespace ConsoleApp1
                 new NextOfKin() {FirstName = "Herman", LastName = "Hermansson", Relationship = "Pappa"},
                 new NextOfKin() {FirstName = "Antonella", LastName = "Roccuzzo", Relationship = "Fru"}
             });
+            db.SaveChanges();
         }
 
 

@@ -13,9 +13,17 @@ namespace ConsoleApp1
     {
         public static void Main()
         {
-            var context = new CampsContext();
-            context.Database.EnsureDeleted();
-            
+            var db = new CampsContext();
+            db.Database.EnsureDeleted();
+           
+            //Utilities utilities = new();
+
+
+            //utilities.AddCabin(db);
+            //utilities.AddCampers(db);
+            //utilities.AddNextOfKin(db);
+            //utilities.AddCounselor(db);
+
             //int option = Utilities.ShowMenu("Please choose one of the following: ", new[]
             //{
             //    ""
