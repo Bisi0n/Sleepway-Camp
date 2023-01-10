@@ -48,7 +48,7 @@ namespace Application
 
             foreach (var c in next)
             {
-                Console.WriteLine($"Släkting {c.NokId} {c.FirstName} {c.LastName} Relation {c.Relationship}");
+                Console.WriteLine($"Släkting {c.NokId} {c.FirstName} {c.LastName} är {c.Relationship} till gäst {c.Camper.CamperId}");
 
             }
 
