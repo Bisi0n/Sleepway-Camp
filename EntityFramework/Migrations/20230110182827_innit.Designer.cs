@@ -12,7 +12,7 @@ using Sleepway.Context;
 namespace Sleepway.Migrations
 {
     [DbContext(typeof(CampsContext))]
-    [Migration("20230110140513_innit")]
+    [Migration("20230110182827_innit")]
     partial class innit
     {
         /// <inheritdoc />

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Update
+    public class Update
     {
+        public static void UpdateData()
+        {
+
+        }
     }
 }

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Delete
+    public class Delete
     {
+        public static void DeleteData()
+        {
+
+        }
     }
 }

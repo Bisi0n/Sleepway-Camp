@@ -1,4 +1,5 @@
 ﻿using Microsoft.Identity.Client;
+using Sleepway.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +11,9 @@ namespace Application
 {
     public class Program
     {
-       public static void Main()
+        public static void Main()
         {
+            var db = new CampsContext();
             bool done = false;
             while (!done)
             {
@@ -25,11 +27,11 @@ namespace Application
 
                 });
                 Console.Clear();
-                if(option == 0)
+                if (option == 0)
                 {
                     Create.CreateData();
-                } 
-                else if(option == 1)
+                }
+                else if (option == 1)
                 {
                     var choice = Utilities.ShowMenu("Visa: ", new[]
                     {
@@ -39,31 +41,28 @@ namespace Application
                         "Stugor"
                     });
                     Console.Clear();
-                    if(choice == 0)
+                    if (choice == 0)
                     {
-                        //Camper
+                        Read.ReadDCamper(db);
                     }
-                    else if(choice == 1)
+                    else if (choice == 1)
                     {
-                        //NextOfkin
+                        Read.ReadDNextOfKin(db);
                     }
                     else if (choice == 2)
                     {
-                        //Counselor
+                        Read.ReadDCounselor(db);
                     }
                     else
                     {
-                        //Cabin
+                        Read.ReadDCabin(db);
                     }
-
-
-
                 }
-                else if(option == 2)
+                else if (option == 2)
                 {
                     Update.UpdateData();
                 }
-                else if(option == 3)
+                else if (option == 3)
                 {
                     Delete.DeleteData();
                 }
