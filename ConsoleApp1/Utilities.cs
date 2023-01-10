@@ -10,43 +10,76 @@ namespace ConsoleApp1
 {
     public class Utilities
     {
-        public static void AddCabin(CampsContext db)
-        {
-            db.Cabins.AddRange(new[]
-                {
-                new Cabin() { Name = "High Hopes"},
-                new Cabin() { Name = "Golden Valley"},
-                new Cabin() { Name = "Moonligh Ridge"},
-            });
-            db.SaveChanges();
-        }
+        //public static void AddCabin(CampsContext db)
+        //{
+        //    var cabins = new[]
+        //    {
+        //        new Cabin() { Name = "High Hopes"},
+        //        new Cabin() { Name = "Golden Valley"},
+        //        new Cabin() { Name = "Moonligh Ridge"}
+        //    };
+            
+        //    //db.Cabins.AddRange(new[]
+        //    //    {
+        //    //    new Cabin() { Name = "High Hopes"},
+        //    //    new Cabin() { Name = "Golden Valley"},
+        //    //    new Cabin() { Name = "Moonligh Ridge"}
+        //    //});
 
-        public static void AddCampers(CampsContext db)
-        {
-            // 18/3 = 6
-            db.Campers.AddRange(new[]
-            {
-                new Camper() {FirstName = "Brad", LastName = "Pitt", Room = 1},
-                new Camper() {FirstName = "David", LastName = "Beckham", Room = 1},
-                new Camper() {FirstName = "Sara", LastName = "Larsson", Room = 1},
-                new Camper() {FirstName = "Eva", LastName = "Andersson", Room = 1},
-                new Camper() {FirstName = "Johan", LastName = "Pär", Room = 1},
-                new Camper() {FirstName = "Zlatan", LastName = "Ibrahimovid", Room = 1},
-                new Camper() {FirstName = "Lisa", LastName = "Olsson", Room = 2},
-                new Camper() {FirstName = "Martin", LastName = "Dalberg", Room = 2},
-                new Camper() {FirstName = "Sandra", LastName = "Österberg", Room = 2},
-                new Camper() {FirstName = "Annika", LastName = "Svensson", Room = 2},
-                new Camper() {FirstName = "Peter", LastName = "Parker", Room = 2},
-                new Camper() {FirstName = "Thierry", LastName = "Henry", Room = 2},
-                new Camper() {FirstName = "Lionel", LastName = "Messi", Room = 3},
-                new Camper() {FirstName = "Koby", LastName = "Bryant", Room = 3},
-                new Camper() {FirstName = "Muhammed", LastName = "Ali", Room = 3},
-                new Camper() {FirstName = "Pele", LastName = "Nasicmo", Room = 3},
-                new Camper() {FirstName = "Ronaldo", LastName = "Nazario", Room = 3},
-                new Camper() {FirstName = "Ronaldinho", LastName = "Gaucho", Room = 3}
-            });
-            db.SaveChanges();
-        }
+        //    db.Cabins.AddRange(cabins);
+        //    db.SaveChanges();
+
+            
+        //    db.Campers.AddRange(new[]
+        //    {
+        //        new Camper() {FirstName = "Brad", LastName = "Pitt", Room = 1, CabinId = cabins[0].CabinId},
+        //        new Camper() {FirstName = "David", LastName = "Beckham", Room = 1, CabinId = cabins[0].CabinId},
+        //        new Camper() {FirstName = "Sara", LastName = "Larsson", Room = 1, CabinId = cabins[0].CabinId},
+        //        new Camper() {FirstName = "Eva", LastName = "Andersson", Room = 1, CabinId = cabins[0].CabinId},
+        //        new Camper() {FirstName = "Johan", LastName = "Pär"},
+        //        new Camper() {FirstName = "Zlatan", LastName = "Ibrahimovid"},
+        //        new Camper() {FirstName = "Lisa", LastName = "Olsson", Room = 2, CabinId = cabins[1].CabinId},
+        //        new Camper() {FirstName = "Martin", LastName = "Dalberg", Room = 2, CabinId = cabins[1].CabinId},
+        //        new Camper() {FirstName = "Sandra", LastName = "Österberg", Room = 2, CabinId = cabins[1].CabinId},
+        //        new Camper() {FirstName = "Annika", LastName = "Svensson", Room = 2, CabinId = cabins[1].CabinId},
+        //        new Camper() {FirstName = "Peter", LastName = "Parker"},
+        //        new Camper() {FirstName = "Thierry", LastName = "Henry"},
+        //        new Camper() {FirstName = "Lionel", LastName = "Messi", Room = 3, CabinId = cabins[2].CabinId},
+        //        new Camper() {FirstName = "Koby", LastName = "Bryant", Room = 3, CabinId = cabins[2].CabinId},
+        //        new Camper() {FirstName = "Muhammed", LastName = "Ali", Room = 3, CabinId = cabins[2].CabinId},
+        //        new Camper() {FirstName = "Pele", LastName = "Nasicmo", Room = 3, CabinId = cabins[2].CabinId},
+        //        new Camper() {FirstName = "Ronaldo", LastName = "Nazario"},
+        //        new Camper() {FirstName = "Ronaldinho", LastName = "Gaucho"}
+        //    });
+        //    db.SaveChanges();
+        //}
+
+        //public static void AddCampers(CampsContext db)
+        //{
+        //    // 18/3 = 6
+        //    db.Campers.AddRange(new[]
+        //    {
+        //        new Camper() {FirstName = "Brad", LastName = "Pitt", Room = 1},
+        //        new Camper() {FirstName = "David", LastName = "Beckham", Room = 1},
+        //        new Camper() {FirstName = "Sara", LastName = "Larsson", Room = 1},
+        //        new Camper() {FirstName = "Eva", LastName = "Andersson", Room = 1},
+        //        new Camper() {FirstName = "Johan", LastName = "Pär", Room = 1},
+        //        new Camper() {FirstName = "Zlatan", LastName = "Ibrahimovid", Room = 1},
+        //        new Camper() {FirstName = "Lisa", LastName = "Olsson", Room = 2},
+        //        new Camper() {FirstName = "Martin", LastName = "Dalberg", Room = 2},
+        //        new Camper() {FirstName = "Sandra", LastName = "Österberg", Room = 2},
+        //        new Camper() {FirstName = "Annika", LastName = "Svensson", Room = 2},
+        //        new Camper() {FirstName = "Peter", LastName = "Parker", Room = 2},
+        //        new Camper() {FirstName = "Thierry", LastName = "Henry", Room = 2},
+        //        new Camper() {FirstName = "Lionel", LastName = "Messi", Room = 3},
+        //        new Camper() {FirstName = "Koby", LastName = "Bryant", Room = 3},
+        //        new Camper() {FirstName = "Muhammed", LastName = "Ali", Room = 3},
+        //        new Camper() {FirstName = "Pele", LastName = "Nasicmo", Room = 3},
+        //        new Camper() {FirstName = "Ronaldo", LastName = "Nazario", Room = 3},
+        //        new Camper() {FirstName = "Ronaldinho", LastName = "Gaucho", Room = 3}
+        //    });
+        //    db.SaveChanges();
+        //}
 
         public static void AddCounselor(CampsContext db)
         {
@@ -58,18 +91,24 @@ namespace ConsoleApp1
 
             });
             db.SaveChanges();
+
+
         }
 
-        public static void AddNextOfKin(CampsContext db)
-        {
-            db.NextOfKins.AddRange(new[]
-            {
-                new NextOfKin() {FirstName = "Gunnila", LastName = "Strömmer", Relationship = "Faster"},
-                new NextOfKin() {FirstName = "Herman", LastName = "Hermansson", Relationship = "Pappa"},
-                new NextOfKin() {FirstName = "Antonella", LastName = "Roccuzzo", Relationship = "Fru"}
-            });
-            db.SaveChanges();
-        }
+        //public static void AddNextOfKin(CampsContext db)
+        //{
+        //    db.NextOfKins.AddRange(new[]
+        //    {
+        //        new NextOfKin() {FirstName = "Gunnila", LastName = "Strömmer", Relationship = "Faster"},
+        //        new NextOfKin() {FirstName = "Herman", LastName = "Hermansson", Relationship = "Pappa"},
+        //        new NextOfKin() {FirstName = "Antonella", LastName = "Roccuzzo", Relationship = "Fru"}
+        //    });
+        //    db.SaveChanges();
+        //}
+
+
+
+
 
 
 

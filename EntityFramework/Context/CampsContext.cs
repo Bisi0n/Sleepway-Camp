@@ -27,7 +27,7 @@ namespace Sleepway.Context
         public DbSet<Counselor> Counselors { get; set; }
         public DbSet<NextOfKin> NextOfKins { get; set; }
 
-        private readonly string connection = @"Server=DESKTOP-KVI14FD\SQLEXPRESS;Database=Sleepway;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=true;"; 
+        private readonly string connection = @"Server=DESKTOP-GHKGJ8K\SQLEXPRESS;Database=Sleepway;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=true;"; 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(connection);

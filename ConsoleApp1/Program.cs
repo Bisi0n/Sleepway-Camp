@@ -13,16 +13,19 @@ namespace ConsoleApp1
     {
         public static void Main()
         {
-            var db = new CampsContext();
-            db.Database.EnsureDeleted();
-           
+            //var db = new CampsContext();
+            //db.Database.EnsureDeleted();
+
+            //Campers can be without a cabin
+            //Max campers allowed in a cabin 4
+
             //Utilities utilities = new();
 
 
-            //utilities.AddCabin(db);
-            //utilities.AddCampers(db);
-            //utilities.AddNextOfKin(db);
-            //utilities.AddCounselor(db);
+            //Utilities.AddCabin(db);
+            //Utilities.AddCampers(db);
+            //Utilities.AddNextOfKin(db);
+            //Utilities.AddCounselor(db);
 
             //int option = Utilities.ShowMenu("Please choose one of the following: ", new[]
             //{
