@@ -11,7 +11,7 @@ namespace Sleepway.Models
     public class Camper
     {
         [Key]
-        public int Id { get; set; }
+        public int CamperId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime StartDate { get; set; }
@@ -21,7 +21,8 @@ namespace Sleepway.Models
 
 
         //[ForeignKey("Cabin")]
-        //public int? CabinId { get; set; } 
+        //Kan vara null
+        public int? CabinId { get; set; } 
 
         public virtual Cabin Cabin { get; set; }
         public virtual ICollection<NextOfKin> NextOfKins { get; set; }

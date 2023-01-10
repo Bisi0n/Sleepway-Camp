@@ -11,7 +11,11 @@ namespace Application
     {
        public static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            Utilities.ShowMenu("Vad vill du göra?", new[]
+            {
+                "Lägg till ",
+
+            });
         }
     }
 }

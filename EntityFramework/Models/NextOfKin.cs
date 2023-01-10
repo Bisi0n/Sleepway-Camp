@@ -18,7 +18,7 @@ namespace Sleepway.Models
 
         //Must have a camper relative
         [Required]
-        //public Camper Id { get; set; }
+        public int CamperId { get; set; }
         public Camper Camper { get; set; }
 
     }

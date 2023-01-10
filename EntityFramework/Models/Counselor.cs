@@ -20,7 +20,7 @@ namespace Sleepway.Models
 
 
         //[ForeignKey("Cabin")]
-        public int CabinId { get; set; }
+        public int? CabinId { get; set; }
         
         public virtual Cabin Cabin { get; set; }
     }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Application
 {
-    internal class Create
+    public class Create
     {
+
     }
 }
