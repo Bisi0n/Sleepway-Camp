@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sleepway", "EntityFramework\Sleepway.csproj", "{7213DFD5-971D-4227-AF17-20D40446B5BA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{38F47A5C-7A65-42B6-931C-2AB89E0441CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7213DFD5-971D-4227-AF17-20D40446B5BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7213DFD5-971D-4227-AF17-20D40446B5BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7213DFD5-971D-4227-AF17-20D40446B5BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38F47A5C-7A65-42B6-931C-2AB89E0441CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38F47A5C-7A65-42B6-931C-2AB89E0441CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38F47A5C-7A65-42B6-931C-2AB89E0441CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38F47A5C-7A65-42B6-931C-2AB89E0441CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
