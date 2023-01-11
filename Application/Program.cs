@@ -24,7 +24,6 @@ namespace Application
                     "Ändra",
                     "Radera",
                     "Avsluta"
-
                 });
                 Console.Clear();
                 if (option == 0)
@@ -37,24 +36,25 @@ namespace Application
                         "Stuga"
                     });
                     Console.Clear();
-                    if(choice == 0)
+                    if (choice == 0)
                     {
                         Create.CreateCamper(db);
+                        Console.WriteLine();
                     }
-                    else if(choice == 1)
+                    else if (choice == 1)
                     {
                         Create.CreateNextOfKin(db);
-
+                        Console.WriteLine();
                     }
                     else if (choice == 2)
                     {
                         Create.CreateCounselor(db);
-
+                        Console.WriteLine();
                     }
                     else
                     {
                         Create.CreateCabin(db);
-
+                        Console.WriteLine();
                     }
                 }
                 else if (option == 1)
@@ -98,12 +98,12 @@ namespace Application
                         "Stuga"
                     });
                     Console.Clear();
-                    if(choice == 0)
+                    if (choice == 0)
                     {
                         Update.UpdateCamper(db);
                         Console.WriteLine();
                     }
-                    else if(choice == 1)
+                    else if (choice == 1)
                     {
                         Update.UpdateNextOfKin(db);
                         Console.WriteLine();
@@ -113,7 +113,7 @@ namespace Application
                         Update.UpdateCounselor(db);
                         Console.WriteLine();
                     }
-                    else 
+                    else
                     {
                         Update.UpdateCabin(db);
                         Console.WriteLine();
@@ -129,17 +129,17 @@ namespace Application
                         "Stuga"
                     });
                     Console.Clear();
-                    if(choice == 0)
+                    if (choice == 0)
                     {
                         Delete.DeleteCamper(db);
                         Console.WriteLine();
                     }
-                    else if (choice == 1) 
+                    else if (choice == 1)
                     {
                         Delete.DeleteNextOfKin(db);
                         Console.WriteLine();
                     }
-                    else if (choice == 2) 
+                    else if (choice == 2)
                     {
                         Delete.DeleteCounselor(db);
                         Console.WriteLine();
@@ -155,8 +155,8 @@ namespace Application
                     Console.WriteLine("Kom inte tillbaka!");
                     Console.Beep();
                     Console.Beep();
-                    Console.Beep();          
-                    Console.Beep();          
+                    Console.Beep();
+                    Console.Beep();
                     Console.Beep();
                     done = true;
                 }

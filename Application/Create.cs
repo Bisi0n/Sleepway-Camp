@@ -16,8 +16,13 @@ namespace Application
             Console.Write("Namnge stuga: ");
             var name = Console.ReadLine();
 
-            db.Add(name);
+            var c = new Cabin
+            {
+                Name = name
+            };
+            db.Add(c);
             db.SaveChanges();
+            Console.WriteLine("Stuga tillagd!");
         }
         public static void CreateCamper(CampsContext db)
         {
@@ -45,6 +50,8 @@ namespace Application
             };
             db.Add(c);
             db.SaveChanges();
+            Console.WriteLine("Gäst tillagd!");
+
 
         }
         public static void CreateCounselor(CampsContext db)
@@ -77,6 +84,7 @@ namespace Application
             };
             db.Add(c);
             db.SaveChanges();
+            Console.WriteLine("Personal tillagt!");
         }
         public static void CreateNextOfKin(CampsContext db)
         {
@@ -101,15 +109,26 @@ namespace Application
             Console.Write("Ange relaterad gäst ID: ");
             var iD = int.Parse(Console.ReadLine());
 
-            var c = new NextOfKin
+            var relatedCamper = db.Campers.FirstOrDefault(c => c.CamperId == iD);
+
+            if (relatedCamper != null)
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Relationship = relation,
-                CamperId= iD
-            };
-            db.Add(c);
-            db.SaveChanges();
+                var c = new NextOfKin
+                {
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Relationship = relation,
+                    CamperId= iD
+                };
+                db.Add(c);
+                db.SaveChanges();
+                Console.WriteLine("Släktning tillagd!");
+            }
+            else
+            {
+                Console.WriteLine("Relaterad gäst kunde ej hittas, Vänligen försök igen!");
+            }
+
         }
     }
 }
