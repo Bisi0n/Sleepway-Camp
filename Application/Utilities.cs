@@ -67,22 +67,6 @@ namespace Application
         //            );
         //    }
         //}
-
-
-
-        public static void CreateData(CampsContext db)
-        {
-            //db.Cabins.AddRange(new[]
-            //  {
-            //    new Cabin() { Name = "High Hopes"},
-            //    new Cabin() { Name = "Golden Valley"},
-            //    new Cabin() { Name = "Moonligh Ridge"},
-            //});
-            //db.SaveChanges();
-
-            //var 
-
-        }
         public static int ShowMenu(string prompt, IEnumerable<string> options)
         {
             if (options == null || options.Count() == 0)

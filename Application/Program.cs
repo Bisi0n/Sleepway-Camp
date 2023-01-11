@@ -29,7 +29,33 @@ namespace Application
                 Console.Clear();
                 if (option == 0)
                 {
-                    Create.CreateData();
+                    var choice = Utilities.ShowMenu("Skapa: ", new[]
+                    {
+                        "Gäst",
+                        "Släktning",
+                        "Personal",
+                        "Stuga"
+                    });
+                    Console.Clear();
+                    if(choice == 0)
+                    {
+                        Create.CreateCamper(db);
+                    }
+                    else if(choice == 1)
+                    {
+                        Create.CreateNextOfKin(db);
+
+                    }
+                    else if (choice == 2)
+                    {
+                        Create.CreateCounselor(db);
+
+                    }
+                    else
+                    {
+                        Create.CreateCabin(db);
+
+                    }
                 }
                 else if (option == 1)
                 {
