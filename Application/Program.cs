@@ -101,23 +101,54 @@ namespace Application
                     if(choice == 0)
                     {
                         Update.UpdateCamper(db);
+                        Console.WriteLine();
                     }
                     else if(choice == 1)
                     {
                         Update.UpdateNextOfKin(db);
+                        Console.WriteLine();
                     }
                     else if (choice == 2)
                     {
                         Update.UpdateCounselor(db);
+                        Console.WriteLine();
                     }
                     else 
                     {
                         Update.UpdateCabin(db);
+                        Console.WriteLine();
                     }
                 }
                 else if (option == 3)
                 {
-                    Delete.DeleteData();
+                    var choice = Utilities.ShowMenu("Radera: ", new[]
+                   {
+                        "Gäst",
+                        "Släktning",
+                        "Personal",
+                        "Stuga"
+                    });
+                    Console.Clear();
+                    if(choice == 0)
+                    {
+                        Delete.DeleteCamper(db);
+                        Console.WriteLine();
+                    }
+                    else if (choice == 1) 
+                    {
+                        Delete.DeleteNextOfKin(db);
+                        Console.WriteLine();
+                    }
+                    else if (choice == 2) 
+                    {
+                        Delete.DeleteCounselor(db);
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Delete.DeleteCabin(db);
+                        Console.WriteLine();
+                    }
                 }
                 else
                 {
