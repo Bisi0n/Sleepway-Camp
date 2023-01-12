@@ -12,10 +12,11 @@ namespace Application
         public static void ReadDCabin(CampsContext db)
         {
             var cab = db.Cabins.ToList();
-
+            Console.WriteLine("Stugor: ");
+            
             foreach(var c in cab)
             {
-                Console.WriteLine($"Stuga {c.CabinId} {c.Name}");
+                Console.WriteLine($"{c.CabinId} {c.Name}");
 
             }
 
@@ -23,10 +24,11 @@ namespace Application
         public static void ReadDCamper(CampsContext db)
         {
             var cam = db.Campers.ToList();
-
+            Console.WriteLine("Gäster: ");
+            
             foreach (var c in cam)
             {
-                Console.WriteLine($"Gäst {c.CamperId} {c.FirstName} {c.LastName}");
+                Console.WriteLine($"{c.CamperId} {c.FirstName} {c.LastName}");
 
             }
 
@@ -34,10 +36,11 @@ namespace Application
         public static void ReadDCounselor(CampsContext db)
         {
             var con = db.Counselors.ToList();
+            Console.WriteLine("Ledare");
 
             foreach (var c in con)
             {
-                Console.WriteLine($"Ledare {c.CounselorId} {c.FirstName} ''{c.NickName} '' {c.LastName}");
+                Console.WriteLine($"{c.CounselorId} {c.FirstName} ''{c.NickName} '' {c.LastName}");
 
             }
 
@@ -45,6 +48,7 @@ namespace Application
         public static void ReadDNextOfKin(CampsContext db)
         {
             var next = db.NextOfKins.ToList();
+            Console.WriteLine("Släktnigar: ");
 
             foreach (var c in next)
             {

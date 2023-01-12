@@ -23,6 +23,7 @@ namespace Application
                     "Visa",
                     "Ändra",
                     "Radera",
+                    "Sök",
                     "Avsluta"
                 });
                 Console.Clear();
@@ -122,7 +123,7 @@ namespace Application
                 else if (option == 3)
                 {
                     var choice = Utilities.ShowMenu("Radera: ", new[]
-                   {
+                    {
                         "Gäst",
                         "Släktning",
                         "Personal",
@@ -148,6 +149,26 @@ namespace Application
                     {
                         Delete.DeleteCabin(db);
                         Console.WriteLine();
+                    }
+                }
+                else if (option == 4)
+                {
+                    var choice = Utilities.ShowMenu("Sök efter gäster: ", new[]
+                    {
+                        "Via stuga",
+                        "Med släktningar"
+
+                    });
+                    Console.Clear();
+                    if (choice == 0)
+                    {
+                        Report.SearchCamper(db);
+                        //behöver förbättras
+                    }
+                    else
+                    {
+                        Report.SearchNOK(db);
+                        //behöver ändras
                     }
                 }
                 else
