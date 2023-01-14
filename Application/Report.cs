@@ -23,6 +23,7 @@ namespace Application
             Console.Write("Ange stuga ID: ");
             var cabinId = int.Parse(Console.ReadLine());
 
+            //Check user input = cabin ID
             var searchCabin = db.Cabins.FirstOrDefault(c => c.CabinId == cabinId);
 
             Console.WriteLine();
@@ -31,6 +32,7 @@ namespace Application
                 Console.WriteLine($"Stuga {searchCabin.CabinId} {searchCabin.Name}");
                 Console.WriteLine();
                 
+                //Check user input = Campers.Cabin ID
                 var camper = db.Campers.Where(c => c.CabinId == cabinId).ToList();
                 if (camper.Count > 0)
                 {
@@ -59,58 +61,58 @@ namespace Application
         {
             Console.WriteLine("Arbete pågår");
 
-            //var cab = db.Cabins.ToList();
+            var cab = db.Cabins.ToList();
 
-            //foreach (var c in cab)
-            //{
-            //    Console.WriteLine($"Stuga {c.CabinId} {c.Name}");
+            foreach (var c in cab)
+            {
+                Console.WriteLine($"Stuga {c.CabinId} {c.Name}");
 
-            //}
-            //Console.WriteLine();
+            }
+            Console.WriteLine();
 
-            //Console.Write("Ange stuga ID: ");
-            //int cabinId = int.Parse(Console.ReadLine());
+            Console.Write("Ange stuga ID: ");
+            int cabinId = int.Parse(Console.ReadLine());
 
-            //var searchCabin = db.Cabins.FirstOrDefault(c => c.CabinId == cabinId);
+            var searchCabin = db.Cabins.FirstOrDefault(c => c.CabinId == cabinId);
 
-            //if (searchCabin != null)
-            //{
-            //    Console.WriteLine($"Stuga {searchCabin.CabinId} {searchCabin.Name}");
-            //    Console.WriteLine();
+            if (searchCabin != null)
+            {
+                Console.WriteLine($"Stuga {searchCabin.CabinId} {searchCabin.Name}");
+                Console.WriteLine();
 
-            //    //.Any() return campers with next of kin
-            //    var campersWithNOK = db.Campers.Where(c => c.CabinId == cabinId && c.NextOfKins.Any()).ToList();
-            //    if (campersWithNOK.Count > 0)
-            //    {
-            //        Console.WriteLine("Gäster med släktningar:");
-            //        foreach (var c in campersWithNOK)
-            //        {
-            //            Console.WriteLine($" {c.CamperId} {c.FirstName} {c.LastName} släkting: ");
+                //.Any() return campers with next of kin
+                var campersWithNOK = db.Campers.Where(c => c.CabinId == cabinId && c.NextOfKins.Any()).ToList();
+                if (campersWithNOK.Count > 0)
+                {
+                    Console.WriteLine("Gäster med släktningar:");
+                    foreach (var c in campersWithNOK)
+                    {
+                        Console.WriteLine($" {c.CamperId} {c.FirstName} {c.LastName} släkting: ");
 
-            //            //System.NullReferenceException
-            //            if (c.NextOfKins != null)
-            //            {
-            //                //print out NextOfKin
-            //                foreach (var nok in c.NextOfKins)
-            //                {
-            //                    Console.WriteLine($"{nok.FirstName} {nok.LastName}");
-            //                }
-            //            }
-            //            else
-            //            {
-            //                Console.WriteLine("Gäster med släktningar saknas!");
-            //            }
-            //        }
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Inga gäster med släktningar bor i denna stuga.");
-            //    }
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Stuga kunde ej hittas, vänligen försök igen!");
-            //}
+                        //System.NullReferenceException
+                        if (c.NextOfKins != null)
+                        {
+                            //print out NextOfKin
+                            foreach (var nok in c.NextOfKins)
+                            {
+                                Console.WriteLine($"{nok.FirstName} {nok.LastName}");
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Gäster med släktningar saknas!");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Inga gäster med släktningar bor i denna stuga.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Stuga kunde ej hittas, vänligen försök igen!");
+            }
 
         }
     }

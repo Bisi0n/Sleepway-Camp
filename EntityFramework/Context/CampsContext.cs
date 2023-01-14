@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Sleepway.Context
 {
@@ -21,11 +22,16 @@ namespace Sleepway.Context
 
         }
 
-        //public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Visit> Visits { get; set; }
         public DbSet<Cabin> Cabins { get; set; }
         public DbSet<Camper> Campers { get; set; }
         public DbSet<Counselor> Counselors { get; set; }
         public DbSet<NextOfKin> NextOfKins { get; set; }
+
+        //Din
+        //"Data Source= LAPTOP-HO7CS2VO\\SQLEXPRESS;Initial Catalog={databas namn};Trusted_Connection=True; Integrated Security=true;TrustServerCertificate=true;"
+
+        //Med vår  private readonly string connection = @"Server=LAPTOP-HO7CS2VO\SQLEXPRESS;Database=Sleepway;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=true;";
 
         private readonly string connection = @"Server=DESKTOP-KVI14FD\SQLEXPRESS;Database=Sleepway;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=true;";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -73,6 +79,20 @@ namespace Sleepway.Context
                 new Camper { CamperId = 17, FirstName = "Ronaldo", LastName = "Nazario", CabinId = 2, StartDate = new DateTime(2022, 6, 12), EndDate = new DateTime(2022, 6, 14) },
                 new Camper { CamperId = 18, FirstName = "Ronaldinho", LastName = "Gaucho", CabinId = 2, StartDate = new DateTime(2022, 6, 2), EndDate = new DateTime(2022, 6, 10) }
                 );
+            modelBuilder.Entity<Visit>()
+                .Property(v => v.StartDate)
+                .HasColumnType("Start Time")
+                .HasDefaultValueSql("'10:00:00'");
+
+            modelBuilder.Entity<Visit>()
+                .Property (v => v.EndDate)
+                .HasColumnType("")
+                
+            
+            
+            
+            
+            
             modelBuilder.Entity<Counselor>().HasData(
                 new Counselor { CounselorId = 1, FirstName = "Abdi", LastName = "Mohamed", NickName = "Chefen", CabinId = 1, StartDate = new DateTime(2022, 5, 1), EndDate = new DateTime(2022, 5, 29) },
                 new Counselor { CounselorId = 2, FirstName = "Mohammed", LastName = "Jafari", NickName = "Bossen", CabinId = 2, StartDate = new DateTime(2022, 6, 1), EndDate = new DateTime(2022, 6, 29) },
@@ -84,6 +104,13 @@ namespace Sleepway.Context
                 new NextOfKin { NokId = 2, FirstName = "Herman", LastName = "Hermansson", Relationship = "Far", CamperId = 10 },
                 new NextOfKin { NokId = 3, FirstName = "Antonella", LastName = "Roccuzzo", Relationship = "Fru", CamperId = 13 }
                 );
+            modelBuilder.Entity<Visit>().HasData(
+                 new Visit { VisitId = 1, CamperId = 8, NokId = 1, StartDate = new DateTime(2022, 7, 8, 10, 0, 0), EndDate = new DateTime(2022, 7, 8, 13, 0, 0 )},
+                 new Visit { VisitId = 2, CamperId = 10, NokId = 2, StartDate = new DateTime(2022, 7, 25, 14, 0, 0), EndDate= new DateTime(2022, 7, 25, 14, 30, 0)},
+                 new Visit { VisitId = 3, CamperId = 13, NokId = 3, StartDate = new DateTime(2022,6, 5, 19, 0, 0), EndDate= new DateTime(2022,6,5,19,59,0)}
+                 );
+
+
         }
     }
 }

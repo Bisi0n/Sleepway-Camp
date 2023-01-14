@@ -109,6 +109,7 @@ namespace Application
             Console.Write("Ange relaterad gäst ID: ");
             var iD = int.Parse(Console.ReadLine());
 
+            //check if input ID = camper ID
             var relatedCamper = db.Campers.FirstOrDefault(c => c.CamperId == iD);
 
             if (relatedCamper != null)

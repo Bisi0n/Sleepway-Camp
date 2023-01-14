@@ -6,7 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
+//ABDI RAHMAN MOHAMED & MOHAMED JAFARI
+//Connection string finns i context
 namespace Application
 {
     public class Program
@@ -163,22 +164,17 @@ namespace Application
                     if (choice == 0)
                     {
                         Report.SearchCamper(db);
-                        //behöver förbättras
+                        Console.WriteLine();
                     }
                     else
                     {
                         Report.SearchNOK(db);
-                        //behöver ändras
+                        Console.WriteLine();
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Kom inte tillbaka!");
-                    Console.Beep();
-                    Console.Beep();
-                    Console.Beep();
-                    Console.Beep();
-                    Console.Beep();
+                    Console.WriteLine("Välkommen åter!");
                     done = true;
                 }
             }
