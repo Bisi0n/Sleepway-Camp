@@ -20,6 +20,10 @@ namespace Sleepway.Models
         [Required]
         public int CamperId { get; set; }
         public Camper Camper { get; set; }
+        
+        public int? VisitId { get; set; }
+        public virtual Visit Visit { get; set; }
+
 
     }
 }

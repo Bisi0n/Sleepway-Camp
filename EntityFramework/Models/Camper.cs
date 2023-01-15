@@ -27,5 +27,8 @@ namespace Sleepway.Models
         public virtual Cabin Cabin { get; set; }
         public virtual ICollection<NextOfKin> NextOfKins { get; set; }
 
+        public int? VisitId { get; set; }
+        public virtual Visit Visits { get; set; }
+
     }
 }

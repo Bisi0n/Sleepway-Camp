@@ -88,5 +88,23 @@ namespace Application
             Console.CursorVisible = true;
             return selected;
         }
+
+        //public static void ValidateVisit(DateTime startD, DateTime endD)
+        //{
+        //    //To get total visit duration in hour
+        //    var duration = (endD - startD).TotalHours;
+
+        //    if (duration > 3)
+        //    {
+        //        throw new Exception("Besök får vara max 3 timmar!");
+        //    }
+
+        //    //Check if visit starts before 10 and ends after 8
+        //    //StackOverFlow TimeOfDay/TimeSpan
+        //    if (startD.TimeOfDay < new TimeSpan(10, 0, 0 ) || endD.TimeOfDay > new TimeSpan(20, 0, 0))
+        //    {
+        //        throw new Exception("Besök kan endast vara mellan klockan 10:00 till klockan 20:00");
+        //    };
+        //}
     }
 }

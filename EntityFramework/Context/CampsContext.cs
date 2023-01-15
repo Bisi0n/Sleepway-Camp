@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using System.Globalization;
 
 namespace Sleepway.Context
 {
@@ -79,20 +81,36 @@ namespace Sleepway.Context
                 new Camper { CamperId = 17, FirstName = "Ronaldo", LastName = "Nazario", CabinId = 2, StartDate = new DateTime(2022, 6, 12), EndDate = new DateTime(2022, 6, 14) },
                 new Camper { CamperId = 18, FirstName = "Ronaldinho", LastName = "Gaucho", CabinId = 2, StartDate = new DateTime(2022, 6, 2), EndDate = new DateTime(2022, 6, 10) }
                 );
+
+            //This to ensure that visit starts from 10 and not before
             modelBuilder.Entity<Visit>()
                 .Property(v => v.StartDate)
-                .HasColumnType("Start Time")
+                .HasColumnType("datetime2")
                 .HasDefaultValueSql("'10:00:00'");
 
             modelBuilder.Entity<Visit>()
-                .Property (v => v.EndDate)
-                .HasColumnType("")
-                
+                .Property(v => v.EndDate)
+                .HasColumnType("datetime2")
+                .HasDefaultValueSql("'20:00:00'");
+            //.HasDbCheckConstraint("CK_Visit_Duration", "DATEDIFF(hour, StartDate, EndDate) <= 3"); Error
+
+            //https://learn.microsoft.com/sv-se/ef/core/modeling/indexes?tabs=data-annotations#check-constraints
             
-            
-            
-            
-            
+            modelBuilder.Entity<Visit>()
+                .ToTable(v => v.HasCheckConstraint("CK_Visit_Duration", "DATEDIFF(hour, StartDate, EndDate) <= 3"));
+
+
+            //The dependent side could not be determined for the one-to-one relationship between 'Camper.Visits' and 'Visit.Camper'
+            modelBuilder.Entity<Visit>()
+                .HasOne(v => v.Camper)
+                .WithOne(c => c.Visits)
+                .HasForeignKey<Visit>(v => v.CamperId)
+    .           IsRequired(false);
+
+
+
+
+
             modelBuilder.Entity<Counselor>().HasData(
                 new Counselor { CounselorId = 1, FirstName = "Abdi", LastName = "Mohamed", NickName = "Chefen", CabinId = 1, StartDate = new DateTime(2022, 5, 1), EndDate = new DateTime(2022, 5, 29) },
                 new Counselor { CounselorId = 2, FirstName = "Mohammed", LastName = "Jafari", NickName = "Bossen", CabinId = 2, StartDate = new DateTime(2022, 6, 1), EndDate = new DateTime(2022, 6, 29) },
@@ -105,9 +123,9 @@ namespace Sleepway.Context
                 new NextOfKin { NokId = 3, FirstName = "Antonella", LastName = "Roccuzzo", Relationship = "Fru", CamperId = 13 }
                 );
             modelBuilder.Entity<Visit>().HasData(
-                 new Visit { VisitId = 1, CamperId = 8, NokId = 1, StartDate = new DateTime(2022, 7, 8, 10, 0, 0), EndDate = new DateTime(2022, 7, 8, 13, 0, 0 )},
-                 new Visit { VisitId = 2, CamperId = 10, NokId = 2, StartDate = new DateTime(2022, 7, 25, 14, 0, 0), EndDate= new DateTime(2022, 7, 25, 14, 30, 0)},
-                 new Visit { VisitId = 3, CamperId = 13, NokId = 3, StartDate = new DateTime(2022,6, 5, 19, 0, 0), EndDate= new DateTime(2022,6,5,19,59,0)}
+                 new Visit { VisitId = 1, CamperId = 8, NokId = 1, StartDate = new DateTime(2022, 7, 8, 10, 0, 0), EndDate = new DateTime(2022, 7, 8, 13, 0, 0) },
+                 new Visit { VisitId = 2, CamperId = 10, NokId = 2, StartDate = new DateTime(2022, 7, 25, 14, 0, 0), EndDate = new DateTime(2022, 7, 25, 14, 30, 0) },
+                 new Visit { VisitId = 3, CamperId = 13, NokId = 3, StartDate = new DateTime(2022, 6, 5, 19, 0, 0), EndDate = new DateTime(2022, 6, 5, 19, 59, 0) }
                  );
 
 

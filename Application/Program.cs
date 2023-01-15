@@ -25,6 +25,7 @@ namespace Application
                     "Ändra",
                     "Radera",
                     "Sök",
+                    "Besök",
                     "Avsluta"
                 });
                 Console.Clear();
@@ -169,6 +170,25 @@ namespace Application
                     else
                     {
                         Report.SearchNOK(db);
+                        Console.WriteLine();
+                    }
+                }
+                else if (option == 5)
+                {
+                    var choice = Utilities.ShowMenu("Vill du: ", new[]
+                    {
+                        "Boka Besök",
+                        "Visa Besöka"
+                    });
+                    Console.Clear();
+                    if (choice == 0)
+                    {
+                        VisitsCheck.AddVisit(db);
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        VisitsCheck.DisplayVisit(db);
                         Console.WriteLine();
                     }
                 }
