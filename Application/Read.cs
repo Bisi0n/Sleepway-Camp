@@ -57,5 +57,18 @@ namespace Application
             }
 
         }
+        public static void ReadHistory (CampsContext db)
+        {
+            var history = db.History.ToList();
+
+            foreach (var h in history)
+            {
+                Console.WriteLine($"Historik:");
+                Console.WriteLine($"Namn: {h.FirstName} {h.LastName}");
+                Console.WriteLine($"Check-in: {h.Arrivals}");
+                Console.WriteLine($"Check-Out: {h.Departure}");
+                Console.WriteLine($"Title: {h.Title}");
+            }
+        }
     }
 }

@@ -67,7 +67,8 @@ namespace Application
                         "Gäster",
                         "Släktningar",
                         "Personal",
-                        "Stugor"
+                        "Stugor",
+                        "Historik"
                     });
                     Console.Clear();
                     if (choice == 0)
@@ -85,9 +86,14 @@ namespace Application
                         Read.ReadDCounselor(db);
                         Console.WriteLine();
                     }
-                    else
+                    else if (choice == 3)
                     {
                         Read.ReadDCabin(db);
+                        Console.WriteLine();
+                    }
+                    else
+                    {
+                        Read.ReadHistory(db);
                         Console.WriteLine();
                     }
                 }

@@ -30,6 +30,8 @@ namespace Sleepway.Context
         public DbSet<Counselor> Counselors { get; set; }
         public DbSet<NextOfKin> NextOfKins { get; set; }
 
+        public DbSet<History> History { get; set; }
+
         //Din
         //"Data Source= LAPTOP-HO7CS2VO\\SQLEXPRESS;Initial Catalog={databas namn};Trusted_Connection=True; Integrated Security=true;TrustServerCertificate=true;"
 

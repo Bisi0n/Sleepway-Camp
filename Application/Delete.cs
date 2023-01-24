@@ -1,4 +1,5 @@
 ﻿using Sleepway.Context;
+using Sleepway.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -64,6 +65,8 @@ namespace Application
 
             var camperDelete = db.Campers.FirstOrDefault(c => c.CamperId == camperId);
 
+            
+
             if (camperDelete != null)
             {
                 var option = Utilities.ShowMenu("Är du säker på att du vill radera?", new[]
@@ -74,6 +77,16 @@ namespace Application
                 Console.Clear();
                 if (option == 0)
                 {
+                    //Create history for deleted camper
+                    var history = new History
+                    {
+                        FirstName = camperDelete.FirstName,
+                        LastName = camperDelete.LastName,
+                        Arrivals = camperDelete.StartDate,
+                        Departure= camperDelete.EndDate,
+                        Title = "Camper"
+                    };
+                    db.History.Add(history);
                     db.Campers.Remove(camperDelete);
                     db.SaveChanges();
                     Console.WriteLine("Gäst är raderat!");
@@ -113,6 +126,17 @@ namespace Application
                 Console.Clear();
                 if (option == 0)
                 {
+                    //Create history for deleted counselor
+                    var history = new History
+                    {
+                        FirstName = counselorDelete.FirstName,
+                        LastName = counselorDelete.LastName,
+                        Arrivals = counselorDelete.StartDate,
+                        Departure = counselorDelete.EndDate,
+                        Title = "Counselor"
+                    };
+                    db.History.Add(history);
+
                     db.Counselors.Remove(counselorDelete);
                     db.SaveChanges();
                     Console.WriteLine("Ledare är raderat!");

@@ -77,10 +77,10 @@ namespace Application
             foreach (var visit in visitInfo)
             {
                 Console.WriteLine("Du ska besöka: ");
-                Console.WriteLine($"Stuga: {visit.Cabin} ");
+                Console.WriteLine($"Stuga: {visit.Cabin.Name} ");
 
                 Console.WriteLine("Du ska kontakta: ");
-                Console.WriteLine($"Ledare: {visit.Counselor}");
+                Console.WriteLine($"Ledare: {visit.Counselor.NickName}");
             }
 
 
