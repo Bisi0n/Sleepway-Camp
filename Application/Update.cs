@@ -1,4 +1,5 @@
 ﻿using Sleepway.Context;
+using Sleepway.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +19,14 @@ namespace Application
                 Console.WriteLine($"Stuga {c.CabinId} {c.Name}");
 
             }
-           
+
             Console.WriteLine();
             Console.Write("Ange ID: ");
             var cabinId = int.Parse(Console.ReadLine());
 
             var cabinUpdate = db.Cabins.FirstOrDefault(c => c.CabinId == cabinId);
 
-            if(cabinUpdate != null)
+            if (cabinUpdate != null)
             {
                 Console.Write("Namn: ");
                 var newName = Console.ReadLine();
@@ -57,24 +58,28 @@ namespace Application
 
             var camperUpdate = db.Campers.FirstOrDefault(c => c.CamperId == camperId);
 
-            if(camperUpdate != null)
+            //var cabinUpdate = db.Cabins.FirstOrDefault(c => c.CabinId == camperUpdate.CabinId);
+
+            if (camperUpdate != null)
             {
                 var option = Utilities.ShowMenu("Vad vill du ändra?", new[]
                 {
                     "Förnamn",
                     "Efternamn",
                     "Check in",
-                    "Check out"
+                    "Check out",
+                    "Koppla till Stuga",
+                    "Koppla bort Stuga"
                 });
                 Console.Clear();
-                if(option == 0)
+                if (option == 0)
                 {
                     Console.Write("Förnamn: ");
                     var firstName = Console.ReadLine();
-                    
+
                     camperUpdate.FirstName = firstName;
                 }
-                else if(option == 1)
+                else if (option == 1)
                 {
                     Console.Write("Efternamn: ");
                     var lastName = Console.ReadLine();
@@ -89,14 +94,80 @@ namespace Application
 
                     camperUpdate.StartDate = startDate;
                 }
-                else
+                else if (option == 3)
                 {
                     Console.Write("Check out: ");
                     var checkOut = Console.ReadLine();
                     DateTime endDate = Convert.ToDateTime(checkOut);
 
                     camperUpdate.EndDate = endDate;
-                }             
+                }
+                else if (option == 4)
+                {
+                    if (camperUpdate.CabinId == null)
+                    {
+                        var cab = db.Cabins.ToList();
+                        Console.WriteLine("Stugor: ");
+
+                        foreach (var c in cab)
+                        {
+                            Console.WriteLine($"{c.CabinId} {c.Name}");
+
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine("Ange stuga ID du vill koppa till gäst");
+
+                        var cabinId = int.Parse(Console.ReadLine());
+
+                        var cabinUpdate = db.Cabins.FirstOrDefault(c => c.CabinId == cabinId);
+
+                        if (cabinUpdate != null)
+                        {
+                            camperUpdate.CabinId = cabinId;
+
+                            //Create history for ''connected'' camper
+                            var history = new History
+                            {
+                                FirstName = camperUpdate.FirstName,
+                                LastName = camperUpdate.LastName,
+                                Arrivals = camperUpdate.StartDate,
+                                Departure = camperUpdate.EndDate,
+                                Title = "Kopplad gäst"
+                            };
+                            db.History.Add(history);
+                            db.SaveChanges();
+                            Console.WriteLine("Ändring sparad!");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Stuga {cabinId} kunde ej hittas, vänligen försök igen!");
+                        }
+                    }
+                }
+                else
+                {
+                    if (camperUpdate.CabinId != null)
+                    {
+
+                        //Create history for ''disconnected'' camper
+                        var history = new History
+                        {
+                            FirstName = camperUpdate.FirstName,
+                            LastName = camperUpdate.LastName,
+                            Arrivals = camperUpdate.StartDate,
+                            Departure = camperUpdate.EndDate,
+                            Title = "Bortkopplad gäst"
+                        };
+                        db.History.Add(history);
+
+                        camperUpdate.CabinId = null;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{camperUpdate.FirstName} {camperUpdate.LastName} bor inte i någon stuga!");
+                    }
+                }
                 db.SaveChanges();
                 Console.WriteLine("Ändring sparad!");
             }
@@ -114,7 +185,7 @@ namespace Application
                 Console.WriteLine($"Ledare {c.CounselorId} {c.FirstName} ''{c.NickName} '' {c.LastName}");
 
             }
-            
+
             Console.WriteLine();
             Console.Write("Ange ID: ");
             var counselorId = int.Parse(Console.ReadLine());
@@ -129,7 +200,9 @@ namespace Application
                     "Efternamn",
                     "Titel",
                     "Check in",
-                    "Check out"
+                    "Check out",
+                    "Koppla till Stuga",
+                    "Koppla bort Stuga"
                 });
                 Console.Clear();
                 if (option == 0)
@@ -161,13 +234,79 @@ namespace Application
 
                     counselorUpdate.StartDate = startDate;
                 }
-                else
+                else if (option == 4)
                 {
                     Console.Write("Check out: ");
                     var checkOut = Console.ReadLine();
                     DateTime endDate = Convert.ToDateTime(checkOut);
 
                     counselorUpdate.EndDate = endDate;
+                }
+                else if (option == 5)
+                {
+                    if (counselorUpdate.CabinId == null)
+                    {
+                        var cab = db.Cabins.ToList();
+                        Console.WriteLine("Stugor: ");
+
+                        foreach (var c in cab)
+                        {
+                            Console.WriteLine($"{c.CabinId} {c.Name}");
+
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine("Ange stuga ID du vill koppa till lagledare");
+
+                        var cabinId = int.Parse(Console.ReadLine());
+
+                        var cabinUpdate = db.Cabins.FirstOrDefault(c => c.CabinId == cabinId);
+
+                        if (cabinUpdate != null)
+                        {
+                            counselorUpdate.CabinId = cabinId;
+
+                            //Create history for ''connected'' camper
+                            var history = new History
+                            {
+                                FirstName = counselorUpdate.FirstName,
+                                LastName = counselorUpdate.LastName,
+                                Arrivals = counselorUpdate.StartDate,
+                                Departure = counselorUpdate.EndDate,
+                                Title = "Kopplad lagledare"
+                            };
+                            db.History.Add(history);
+                            db.SaveChanges();
+                            Console.WriteLine("Ändring sparad!");
+
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Stuga {cabinId} kunde ej hittas, vänligen försök igen!");
+                        }
+                    }
+                }
+                else
+                {
+                    if (counselorUpdate.CabinId != null)
+                    {
+
+                        //Create history for ''disconnected'' counselor
+                        var history = new History
+                        {
+                            FirstName = counselorUpdate.FirstName,
+                            LastName = counselorUpdate.LastName,
+                            Arrivals = counselorUpdate.StartDate,
+                            Departure = counselorUpdate.EndDate,
+                            Title = "Bortkopplad Lagledare"
+                        };
+                        db.History.Add(history);
+
+                        counselorUpdate.CabinId = null;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{counselorUpdate.FirstName} {counselorUpdate.LastName} bor inte i någon stuga!");
+                    }
                 }
                 db.SaveChanges();
                 Console.WriteLine("Ändring sparad!");
@@ -190,7 +329,7 @@ namespace Application
             Console.WriteLine();
             Console.Write("Ange ID: ");
             var nokID = int.Parse(Console.ReadLine());
-            
+
             var nextOkKinUpdate = db.NextOfKins.FirstOrDefault(c => c.NokId == nokID);
 
             if (nextOkKinUpdate != null)

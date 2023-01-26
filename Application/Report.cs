@@ -59,7 +59,6 @@ namespace Application
         }
         public static void SearchNOK(CampsContext db)
         {
-            Console.WriteLine("Arbete pågår");
 
             var cab = db.Cabins.ToList();
 
@@ -100,7 +99,7 @@ namespace Application
                         }
                         else
                         {
-                            Console.WriteLine("Gäster med släktningar saknas!");
+                            Console.WriteLine("Släktning saknas!");
                         }
                     }
                 }
