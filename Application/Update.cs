@@ -12,13 +12,7 @@ namespace Application
     {
         public static void UpdateCabin(CampsContext db)
         {
-            var cab = db.Cabins.ToList();
-
-            foreach (var c in cab)
-            {
-                Console.WriteLine($"Stuga {c.CabinId} {c.Name}");
-
-            }
+            Read.ReadDCabin(db);
 
             Console.WriteLine();
             Console.Write("Ange ID: ");
@@ -44,13 +38,7 @@ namespace Application
         }
         public static void UpdateCamper(CampsContext db)
         {
-            var cam = db.Campers.ToList();
-
-            foreach (var c in cam)
-            {
-                Console.WriteLine($"Gäst {c.CamperId} {c.FirstName} {c.LastName}");
-
-            }
+            Read.ReadDCamper(db);
 
             Console.WriteLine();
             Console.Write("Ange ID: ");
@@ -178,13 +166,7 @@ namespace Application
         }
         public static void UpdateCounselor(CampsContext db)
         {
-            var con = db.Counselors.ToList();
-
-            foreach (var c in con)
-            {
-                Console.WriteLine($"Ledare {c.CounselorId} {c.FirstName} ''{c.NickName} '' {c.LastName}");
-
-            }
+            Read.ReadDCounselor(db);
 
             Console.WriteLine();
             Console.Write("Ange ID: ");
@@ -318,13 +300,7 @@ namespace Application
         }
         public static void UpdateNextOfKin(CampsContext db)
         {
-            var next = db.NextOfKins.ToList();
-
-            foreach (var c in next)
-            {
-                Console.WriteLine($"Släkting {c.NokId} {c.FirstName} {c.LastName} är {c.Relationship} till gäst {c.Camper.CamperId}");
-
-            }
+            Read.ReadDNextOfKin(db);
 
             Console.WriteLine();
             Console.Write("Ange ID: ");

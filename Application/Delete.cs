@@ -12,13 +12,7 @@ namespace Application
     {
         public static void DeleteCabin(CampsContext db)
         {
-            var cab = db.Cabins.ToList();
-
-            foreach (var c in cab)
-            {
-                Console.WriteLine($"Stuga {c.CabinId} {c.Name}");
-
-            }
+           Read.ReadDCabin(db);
             
             Console.WriteLine();
             Console.Write("Ange ID: ");
@@ -52,14 +46,9 @@ namespace Application
         }
         public static void DeleteCamper(CampsContext db)
         {
-            var cam = db.Campers.ToList();
-
-            foreach (var c in cam)
-            {
-                Console.WriteLine($"Gäst {c.CamperId} {c.FirstName} {c.LastName}");
-
-            }
+            Read.ReadDCamper(db);
             Console.WriteLine();
+            
             Console.Write("Ange ID: ");
             var camperId = int.Parse(Console.ReadLine());
 
@@ -103,14 +92,9 @@ namespace Application
         }
         public static void DeleteCounselor(CampsContext db)
         {
-            var con = db.Counselors.ToList();
-
-            foreach (var c in con)
-            {
-                Console.WriteLine($"Ledare {c.CounselorId} {c.FirstName} ''{c.NickName} '' {c.LastName}");
-
-            }
+            Read.ReadDCounselor(db);
             Console.WriteLine();
+            
             Console.Write("Ange ID: ");
             var counselorId = int.Parse(Console.ReadLine());
 
@@ -153,14 +137,9 @@ namespace Application
         }
         public static void DeleteNextOfKin(CampsContext db)
         {
-            var next = db.NextOfKins.ToList();
-
-            foreach (var c in next)
-            {
-                Console.WriteLine($"Släkting {c.NokId} {c.FirstName} {c.LastName} är {c.Relationship} till gäst {c.Camper.CamperId}");
-
-            }
+            Read.ReadDNextOfKin(db)
             Console.WriteLine();
+
             Console.Write("Ange ID: ");
             var nokId = int.Parse(Console.ReadLine());
 

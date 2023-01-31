@@ -6,8 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//ABDI RAHMAN MOHAMED & MOHAMED JAFARI
-//Connection string finns i context
+
 namespace Application
 {
     public class Program

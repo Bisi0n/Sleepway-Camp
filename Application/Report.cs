@@ -11,13 +11,8 @@ namespace Application
     {
         public static void SearchCamper(CampsContext db)
         {
-            var cab = db.Cabins.ToList();
-
-            foreach (var c in cab)
-            {
-                Console.WriteLine($"Stuga {c.CabinId} {c.Name}");
-
-            }
+            Read.ReadDCabin(db);
+            
             Console.WriteLine();
             
             Console.Write("Ange stuga ID: ");
@@ -60,13 +55,7 @@ namespace Application
         public static void SearchNOK(CampsContext db)
         {
 
-            var cab = db.Cabins.ToList();
-
-            foreach (var c in cab)
-            {
-                Console.WriteLine($"Stuga {c.CabinId} {c.Name}");
-
-            }
+            Read.ReadDCabin(db);
             Console.WriteLine();
 
             Console.Write("Ange stuga ID: ");

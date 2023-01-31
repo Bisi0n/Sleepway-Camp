@@ -32,10 +32,6 @@ namespace Sleepway.Context
 
         public DbSet<History> History { get; set; }
 
-        //Din
-        //"Data Source= LAPTOP-HO7CS2VO\\SQLEXPRESS;Initial Catalog={databas namn};Trusted_Connection=True; Integrated Security=true;TrustServerCertificate=true;"
-
-        //Med vår  private readonly string connection = @"Server=LAPTOP-HO7CS2VO\SQLEXPRESS;Database=Sleepway;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=true;";
 
         private readonly string connection = @"Server=DESKTOP-KVI14FD\SQLEXPRESS;Database=Sleepway;Trusted_Connection=True;Integrated Security=true;TrustServerCertificate=true;";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
