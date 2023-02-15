@@ -1,4 +1,4 @@
-# Sleepway-Camp
+# Camp Sleepaway
 A menu-based console app to keep track of Camp Sleepaway's guests, relatives, staff and buildings.
 
 
